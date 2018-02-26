@@ -6,7 +6,7 @@ namespace Primes
 {
     class Program
     {
-        static void Main(string[] args)
+        static void OldMain(string[] args)
         {
             string[] ls;
             //put the initial command into a try catch to ensure the program is able to close gracefully
@@ -34,44 +34,22 @@ namespace Primes
             }
         }
 
-        //Refactor actual calculation to a seperate method.
-        public static string CalculatePrimes(int n)
+        static void Main(string[] args)
         {
-            string output = n + ": "; //create output string to return to the application
-            if (n == 1)
+            Prime prime;
+            try
             {
-                return output + "1, "; // Is 1 a prime number??? Debated, but for the sake of this program, it will be assumed so.
-                //return the value since 1 is the most that it will be.
+                prime = new Prime(args[0]);
             }
-            else
+            catch (IndexOutOfRangeException)
             {
-                //keep the 2 specific method, as it is the only even prime number
-                while (n % 2 == 0)
-                {
-                    n /= 2;
-                    output += "2, ";
-                }
-
-                //removed the specific method for 3, as it is redundant in the next part of the function
-
-                int x = (int)Math.Floor(Math.Sqrt(n)) + 1;
-                for (int j = 3; j < x && n != 1; j += 2) //Added test to see if number has already searched for all primes
-                {
-                    while (n % j == 0)
-                    {
-                        n /= j;
-                        output += j.ToString();
-                        output += ", ";
-                    }
-                }
-
-                if (n > 1)
-                {
-                    output += n.ToString();
-                    output += ", ";
-                }
+                Console.WriteLine("Please pass a path to the text file.");
+                return;
             }
-            return output;
+            prime.PrintAll();
         }
+
+        //Refactor actual calculation to a seperate method.
+        
     }
 }

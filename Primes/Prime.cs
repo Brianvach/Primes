@@ -15,8 +15,7 @@ namespace Primes
         
         public Prime(string Path)
         {
-            string RawInput = ExtractTextFromPath(Path);
-            ExtractIntArray(RawInput);
+            ExtractIntArray(ExtractTextFromPath(Path));
         }
 
         private string ExtractTextFromPath(string path)

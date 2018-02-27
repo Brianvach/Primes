@@ -12,7 +12,8 @@ namespace Primes
         private string output;
         private Dictionary<int, string> PrimeTable = new Dictionary<int, string>(); //Store table of primes to reduce compute time.
         private int[] IntputValues;
-        
+
+        public Prime() { }
         public Prime(string Path)
         {
             ExtractIntArray(ExtractTextFromPath(Path));

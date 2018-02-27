@@ -11,12 +11,13 @@ namespace Primes
     [TestFixture]
     class PrimeTest
     {
+        Prime TestingPrime = new Prime();
         //Tests for 1 thru 3 are to make sure that the core portions do not break
         [Test]
         public void ValidateOne()
         {
             string expected = "1: 1, ";
-            string output = Program.CalculatePrimes(1);
+            string output = TestingPrime.CalculatePrimes(1);
             Assert.AreEqual(expected, output);
         }
 
@@ -24,7 +25,7 @@ namespace Primes
         public void ValidateTwo()
         {
             string expected = "2: 2, ";
-            string output = Program.CalculatePrimes(2);
+            string output = TestingPrime.CalculatePrimes(2);
             Assert.AreEqual(expected, output);
         }
 
@@ -32,7 +33,7 @@ namespace Primes
         public void ValidateThree()
         {
             string expected = "3: 3, ";
-            string output = Program.CalculatePrimes(3);
+            string output = TestingPrime.CalculatePrimes(3);
             Assert.AreEqual(expected, output);
         }
 
@@ -41,7 +42,7 @@ namespace Primes
         public void ValidateFive()
         {
             string expected = "5: 5, ";
-            string output = Program.CalculatePrimes(5);
+            string output = TestingPrime.CalculatePrimes(5);
             Assert.AreEqual(expected, output);
         }
 
@@ -50,7 +51,7 @@ namespace Primes
         public void ValidateLargePrime()
         {
             string expected = "15485863: 15485863, ";
-            string output = Program.CalculatePrimes(15485863);
+            string output = TestingPrime.CalculatePrimes(15485863);
             Assert.AreEqual(expected, output);
         }
 
@@ -59,7 +60,7 @@ namespace Primes
         public void ValidateSmallComposite()
         {
             string expected = "4: 2, 2, ";
-            string output = Program.CalculatePrimes(4);
+            string output = TestingPrime.CalculatePrimes(4);
             Assert.AreEqual(expected, output);
         }
 
@@ -72,7 +73,7 @@ namespace Primes
             {
                 expected += "2, ";
             }
-            string output = Program.CalculatePrimes(1073741824);
+            string output = TestingPrime.CalculatePrimes(1073741824);
             Assert.AreEqual(expected, output);
         }
 
@@ -83,7 +84,7 @@ namespace Primes
             //This number should test how quickly the algorithm is for iterating through possible primes
             string expected = int.MaxValue.ToString();
             expected += ": 2147483647, ";
-            string output = Program.CalculatePrimes(2147483647);
+            string output = TestingPrime.CalculatePrimes(2147483647);
             Assert.AreEqual(expected, output);
         }
 
@@ -93,7 +94,7 @@ namespace Primes
         {
            
             string expected = "223092870: 2, 3, 5, 7, 11, 13, 17, 19, 23, ";
-            string output = Program.CalculatePrimes(223092870);
+            string output = TestingPrime.CalculatePrimes(223092870);
             Assert.AreEqual(expected, output);
         }
 
@@ -102,7 +103,7 @@ namespace Primes
         public void ValidateDoubleHigherPrime()
         {
             string expected = "49: 7, 7, ";
-            string output = Program.CalculatePrimes(49);
+            string output = TestingPrime.CalculatePrimes(49);
             Assert.AreEqual(expected, output);
         }
         
@@ -111,7 +112,7 @@ namespace Primes
         public void TestNumberToFourth()
         {
             string expected = "625: 5, 5, 5, 5, ";
-            string output = Program.CalculatePrimes(625);
+            string output = TestingPrime.CalculatePrimes(625);
             Assert.AreEqual(expected, output);
         }
 
@@ -121,7 +122,7 @@ namespace Primes
             //while 2 * 2 != -4, -4 contains two 2s. This requires that -1 is displayed, or that it gives the incorrect result
             //I will continue to use the same logic as was provided.
             string expected = "-4: 2, 2, ";
-            string output = Program.CalculatePrimes(-4);
+            string output = TestingPrime.CalculatePrimes(-4);
             Assert.AreEqual(expected, output);
         }
 

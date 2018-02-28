@@ -126,6 +126,16 @@ namespace Primes
             Assert.AreEqual(expected, output);
         }
 
+        [Test]
+        public void TestLargeNegativeNumber()
+        {
+            //while 2 * 2 != -4, -4 contains two 2s. This requires that -1 is displayed, or that it gives the incorrect result
+            //I will continue to use the same logic as was provided.
+            string expected = "-1024: 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, ";
+            string output = TestingPrime.CalculatePrimes(-1024);
+            Assert.AreEqual(expected, output);
+        }
+
 
         //no need to test passing a non-integer value, as the program will not compile
     }

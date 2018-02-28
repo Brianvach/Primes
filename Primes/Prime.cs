@@ -9,7 +9,6 @@ namespace Primes
 {
     class Prime
     {
-        private string output;
         private Dictionary<int, string> PrimeTable = new Dictionary<int, string>(); //Store table of primes to reduce compute time.
         private int[] IntputValues;
 
@@ -36,7 +35,12 @@ namespace Primes
 
         private void ExtractIntArray(string RawInput)
         {
-            string[] InputArray = RawInput.Split('\n');
+            string[] InputArray;
+            try
+            {
+                InputArray = RawInput.Split('\n');
+            }
+            catch (NullReferenceException) { return; }
             this.IntputValues = Array.ConvertAll(InputArray, s => Int32.Parse(s));
         }
 
@@ -78,6 +82,7 @@ namespace Primes
 
         private string[] CalculateAllPrimes()
         {
+            if (IntputValues == null) return null;
             string[] FullOutput = new string[this.IntputValues.Length];
             for (int i = 0; i < this.IntputValues.Length; i++)
             {
@@ -111,6 +116,7 @@ namespace Primes
         //This method does not assume that all primes have already been calculated but assumes that they should be
         public void PrintAll()
         {
+            if (this.IntputValues == null) return;
             foreach (string output in this.CalculateAllPrimes())
             {
                 Console.WriteLine(output);

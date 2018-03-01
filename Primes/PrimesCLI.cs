@@ -9,7 +9,7 @@ namespace Primes
 {
     class PrimesCLI : PrimesGenerator
     {
-        private int[] IntputValues;
+        private int[] InputValues;
 
         public PrimesCLI(string Path)
         {
@@ -39,20 +39,9 @@ namespace Primes
                 InputArray = RawInput.Split('\n');
             }
             catch (NullReferenceException) { return; }
-            this.IntputValues = Array.ConvertAll(InputArray, s => Int32.Parse(s));
+            this.InputValues = Array.ConvertAll(InputArray, s => Int32.Parse(s));
         }
-
-        private string[] CalculateAllPrimes()
-        {
-            if (IntputValues == null) return null;
-            string[] FullOutput = new string[this.IntputValues.Length];
-            for (int i = 0; i < this.IntputValues.Length; i++)
-            {
-                FullOutput[i] = CalculatePrimes(i);
-            }
-            return FullOutput;
-        }
-
+        
         //This method does not assume
         public void Print(int n)
         {
@@ -62,10 +51,10 @@ namespace Primes
         //This method does not assume that all primes have already been calculated but assumes that they should be
         public void PrintAll()
         {
-            if (this.IntputValues == null) return;
-            foreach (string output in this.CalculateAllPrimes())
+            if (this.InputValues == null) return;
+            foreach (int num in InputValues)
             {
-                Console.WriteLine(output);
+                Console.WriteLine(CalculatePrimes(num));
             }
         }
     }

@@ -11,7 +11,7 @@ namespace Primes
     [TestFixture]
     class PrimeTest
     {
-        Prime TestingPrime = new Prime();
+        PrimesGenerator TestingPrime = new PrimesGenerator();
         //Tests for 1 thru 3 are to make sure that the core portions do not break
         [Test]
         public void ValidateOne()

@@ -3,46 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace Primes
 {
-    class Prime
+    class PrimesGenerator
     {
         private Dictionary<int, string> PrimeTable = new Dictionary<int, string>(); //Store table of primes to reduce compute time.
-        private int[] IntputValues;
 
-        public Prime() { }
-        public Prime(string Path)
-        {
-            ExtractIntArray(ExtractTextFromPath(Path));
-        }
-
-        private string ExtractTextFromPath(string path)
-        {
-            string[] ls;
-            try
-            {
-                ls = File.ReadAllLines(path);
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Path does not lead to a valid file");
-                return null;
-            }
-            throw new NotImplementedException();
-        }
-
-        private void ExtractIntArray(string RawInput)
-        {
-            string[] InputArray;
-            try
-            {
-                InputArray = RawInput.Split('\n');
-            }
-            catch (NullReferenceException) { return; }
-            this.IntputValues = Array.ConvertAll(InputArray, s => Int32.Parse(s));
-        }
+        public PrimesGenerator() { }        
 
         public string CalculatePrimes(int PassedValue)
         {
@@ -79,17 +47,6 @@ namespace Primes
             this.PrimeTable.Add(PassedValue, Output);
             return Output;
         }
-
-        private string[] CalculateAllPrimes()
-        {
-            if (IntputValues == null) return null;
-            string[] FullOutput = new string[this.IntputValues.Length];
-            for (int i = 0; i < this.IntputValues.Length; i++)
-            {
-                FullOutput[i] = CalculatePrimes(i);
-            }
-            return FullOutput;
-        }
         
         private void DivideByPrime(ref int n, ref string output, int j)
         {
@@ -105,22 +62,6 @@ namespace Primes
             output += j.ToString();
             output += ", ";
             return output;
-        }
-
-        //This method does not assume
-        public void Print(int n)
-        {
-            Console.WriteLine(CalculatePrimes(n));
-        }
-
-        //This method does not assume that all primes have already been calculated but assumes that they should be
-        public void PrintAll()
-        {
-            if (this.IntputValues == null) return;
-            foreach (string output in this.CalculateAllPrimes())
-            {
-                Console.WriteLine(output);
-            }
         }
     }
 }

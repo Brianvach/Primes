@@ -8,10 +8,10 @@ namespace Primes
     {
         static void Main(string[] args)
         {
-            Prime prime;
+            PrimesCLI prime;
             try
             {
-                prime = new Prime(args[0]);
+                prime = new PrimesCLI(args[0]);
             }
             catch (IndexOutOfRangeException)
             {
